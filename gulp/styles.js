@@ -13,16 +13,15 @@ gulp.task('styles', function () {
 	};
 
 	var injectFiles = gulp.src([
-	paths.src + '/styles/**/*.scss',
-	'!' + paths.src + '/styles/vendor/**/*.scss',
+		paths.src + '/styles/**/*.scss',
+		'!' + paths.src + '/styles/vendor/**/*.scss'
 	], {
 		read: false
 	});
 
 	var injectOptions = {
 		transform: function (filePath) {
-			filePath = filePath.replace(paths.src + '/app/', '');
-			filePath = filePath.replace(paths.src + '/components/', '../components/');
+			filePath = filePath.replace(paths.src, '..');
 			return '@import \'' + filePath + '\';';
 		},
 		starttag: '// injector',
@@ -32,10 +31,7 @@ gulp.task('styles', function () {
 
 	var indexFilter = $.filter('app.scss');
 
-	return gulp.src([
-	paths.src + '/app/app.scss',
-	paths.src + '/app/vendor.scss'
-	])
+	return gulp.src([paths.src + '/app/app.scss', paths.src + '/app/vendor.scss'])
 		.pipe(indexFilter)
 		.pipe($.inject(injectFiles, injectOptions))
 		.pipe(indexFilter.restore())

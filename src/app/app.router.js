@@ -10,13 +10,13 @@
 			.state('home', {
 				url: '/',
 				templateUrl: 'app/main/main.html',
-				controller: 'Main as main'
+				controller: 'Main as vm'
 			})
 
 			.state('register', {
 				url: '/register',
 				templateUrl: 'app/register/register.html',
-				controller: 'Register as register'
+				controller: 'Register as vm'
 			});
 
 		$urlRouterProvider.otherwise('/');

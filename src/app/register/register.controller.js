@@ -6,7 +6,10 @@
 
 	function Register() {
 		var vm = this;
-		vm.view = 'Register';
+
+		vm.submit = function () {
+			console.log('User has submited registration form');
+		};
 	}
 
 })();
