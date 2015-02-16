@@ -1,12 +1,18 @@
 (function () {
 
-	'use strict';
+    'use strict';
 
-	angular.module('app.main').controller('Main', Main);
+    angular.module('app.main').controller('Main', Main);
 
-	function Main() {
-		var vm = this;
-		vm.date = moment().format("MMM Do YY");
-	}
+    Main.$inject = ['notifier'];
+
+    function Main(notifier) {
+        var vm = this;
+        vm.date = moment().format("MMM Do YY");
+
+        vm.submit = function () {
+            notifier('success', 'Main', 'Button subbmited', 3000);
+        };
+    }
 
 })();

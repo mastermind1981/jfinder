@@ -1,15 +1,16 @@
 (function () {
 
-	'use strict';
+    'use strict';
 
-	angular.module('app.register').controller('Register', Register);
+    angular.module('app.register').controller('Register', Register);
+    Register.$inject = ['$location','notifier'];
 
-	function Register() {
-		var vm = this;
+    function Register($location, notifier) {
+        var vm = this;
 
-		vm.submit = function () {
-			console.log('User has submited registration form');
-		};
-	}
+        vm.submit = function () {
+            notifier('success', 'Registration', 'Registration complete.', 3000);
+        };
+    }
 
 })();
