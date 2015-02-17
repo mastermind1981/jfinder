@@ -67,8 +67,6 @@ describe('Directives', function () {
 
             expect(element.find('.notification').hasClass('flipOutY')).to.be.false;
             expect(element.find('.notification').hasClass('flipInY')).to.be.true;
-
-            $timeout.flush();
         });
 
     });
