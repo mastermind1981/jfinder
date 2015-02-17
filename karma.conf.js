@@ -10,7 +10,7 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
 
         preprocessors: {
-            './src/client/app/**/!(*.spec)+(.js)': ['coverage']
+            './src/**/!(*.spec)+(.js)': ['coverage']
         },
 
         coverageReporter: {

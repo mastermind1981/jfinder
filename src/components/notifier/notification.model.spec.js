@@ -1,8 +1,8 @@
 describe('Models', function () {
 
-    var Notification;
-
     beforeEach(module('app'));
+
+    var Notification;
 
     beforeEach(inject(function (_Notification_) {
         Notification = _Notification_;
@@ -10,21 +10,24 @@ describe('Models', function () {
 
     describe('Notification model', function () {
 
-        it('should activate notification', function () {
+        it('new instance of Notification model should have visible property set to false', function () {
             var note = new Notification();
-            expect(note.visible).toBe(false);
-
-            note.activate('success', 'Note Title', 'Note message');
-            expect(note.visible).toBe(true);
+            expect(note.visible).to.be.false;
         });
 
-        it('should deactive notification', function () {
+        it('calling method activate on ontification should set visible property to true', function () {
             var note = new Notification();
-            note.activate('success', 'Note Title', 'Note message');
-            expect(note.visible).toBe(true);
+            note.activate('Type', 'Title', 'Message');
+            expect(note.visible).to.be.true;
+        });
+
+        it('calling method deactivate on activated notification should set visible property to false', function () {
+            var note = new Notification();
+            note.activate('Type', 'Title', 'Message');
+            expect(note.visible).to.be.true;
 
             note.deactivate();
-            expect(note.visible).toBe(false);
+            expect(note.visible).to.be.false;
         });
 
     });

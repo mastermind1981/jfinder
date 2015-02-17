@@ -1,47 +1,47 @@
-'use strict';
-
 describe('Directives', function () {
 
-	var scope, form;
+    var scope, form;
 
-	beforeEach(module('app.register'));
+    beforeEach(module('app.register'));
 
-	beforeEach(function () {
-		inject(function ($rootScope, $compile) {
-			scope = $rootScope.$new();
+    beforeEach(function () {
+        inject(function ($rootScope, $compile) {
+            scope = $rootScope.$new();
 
-			var element = angular.element(
-				'<form name="form">' +
-					'<input name="value1" ng-model="value1">' +
-					'<input name="value2" ng-model="value2" equals="value1">' +
-				'</form>'
-			);
+            var element = angular.element(
+                '<form name="form">' +
+                    '<input name="value1" ng-model="value1">' +
+                    '<input name="value2" ng-model="value2" equals="value1">' +
+                '</form>'
+            );
 
-			$compile(element)(scope);
-			form = scope.form;
-		});
-	});
+            $compile(element)(scope);
+            form = scope.form;
+        });
+    });
 
-	describe('Equals directive', function () {
-		it('should not pass with different value 1 and value 2', function () {
-			form.value1.$setViewValue('value1');
-			form.value2.$setViewValue('value2');
+    describe('Equals directive', function () {
 
-			scope.$digest();
+        it('should not pass with different value 1 and value 2', function () {
+            form.value1.$setViewValue('value1');
+            form.value2.$setViewValue('value2');
 
-			expect(form.value2.$dirty).toBe(true);
-			expect(form.value2.$error.equal).toBe(true);
-		});
+            scope.$digest();
 
-		it('should pass with the same values', function () {
-			form.value1.$setViewValue('value1');
-			form.value2.$setViewValue('value1');
+            expect(form.value2.$dirty).to.be.true;
+            expect(form.value2.$error.equal).to.be.true;
+        });
 
-			scope.$digest();
+        it('should pass with the same values', function () {
+            form.value1.$setViewValue('value1');
+            form.value2.$setViewValue('value1');
 
-			expect(form.value2.$dirty).toBe(true);
-			expect(form.value2.$error.equal).toBeUndefined();
-		});
-	});
+            scope.$digest();
+
+            expect(form.value2.$dirty).to.be.true;
+            expect(form.value2.$error.equal).to.be.undefined;
+        });
+
+    });
 
 });
