@@ -1,17 +1,25 @@
 'use strict';
 
-module.exports = function(config) {
+module.exports = function (config) {
 
-  config.set({
-    autoWatch : false,
+    config.set({
+        autoWatch: false,
 
-    frameworks: ['jasmine'],
+        frameworks: ['mocha', 'sinon-chai'],
 
-    browsers : ['PhantomJS'],
+        browsers: ['PhantomJS'],
 
-    plugins : [
-        'karma-phantomjs-launcher',
-        'karma-jasmine'
-    ]
-  });
+        preprocessors: {
+            './src/client/app/**/!(*.spec)+(.js)': ['coverage']
+        },
+
+        coverageReporter: {
+            type: 'text-summary',
+            dir: 'reports/coverage'
+        },
+
+        reporters: ['progress', 'coverage'],
+
+        colors: true
+    });
 };
