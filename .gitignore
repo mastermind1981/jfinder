@@ -1,6 +1,11 @@
-node_modules/
-bower_components/
-.sass-cache/
-.tmp/
-dist/
-reports/
+# Client
+
+client/node_modules/
+client/bower_components/
+client/.sass-cache/
+client/.tmp/
+client/dist/
+client/reports/
+
+
+# Server
