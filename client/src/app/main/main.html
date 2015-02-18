@@ -1,0 +1,15 @@
+<div class="container">
+
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
+    <div class="jumbotron text-center">
+        <h1>'Allo, 'Allo!</h1>
+        <p class="lead">
+            Today we have <strong>{{ vm.date }}</strong>. It is a good time to find a dream job. Good luck!
+        </p>
+        <p><button class="btn btn-lg btn-success" ng-click="vm.submit()">Splendid!</button></p>
+    </div>
+
+    <notification></notification>
+
+</div>

@@ -1,0 +1,17 @@
+<nav class="header" ng-controller="Navbar as vm">
+    <ul class="nav nav-pills pull-right">
+        <li ui-sref-active="active">
+            <a ui-sref="home">Home</a>
+        </li>
+
+        <li ng-hide="vm.isAuthenticated" ui-sref-active="active">
+            <a ui-sref="register">Register</a>
+        </li>
+
+        <li ng-show="vm.isAuthenticated" ui-sref-active="active">
+            <a ui-sref="logout">Logout</a>
+        </li>
+    </ul>
+
+    <h3><a class="logo" ui-sref="home">JFinder</a></h3>
+</nav>
