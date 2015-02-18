@@ -25,6 +25,10 @@
             return notification;
         };
 
+        service.close = function () {
+            notification.deactivate();
+        }
+
         return service;
     }
 

@@ -18,6 +18,7 @@
 
         function link(scope, elemenet, attrs) {
             scope.dirty = false;
+            scope.close = closeNotification;
 
             scope.$watch(watchNotification, updateNotification);
 
@@ -29,6 +30,10 @@
 
             function updateNotification(notification) {
                 scope.notification = notification;
+            }
+
+            function closeNotification() {
+                notifier.close();
             }
         }
     }
