@@ -1,16 +1,16 @@
 .notification-placeholder {
 
-    .notification {
-        max-width:  $notification-box-width;
-        margin: 0 auto;
+	.notification {
+		max-width:  $notification-box-width;
+		margin: 0 auto;
 
-        &.hidden {
-            visibility: hidden;
-        }
+		&.hidden {
+			visibility: hidden;
+		}
 
-        button {
-            margin-top: -20px;
-        }
-    }
+		button {
+			margin-top: 0px;
+		}
+	}
 
 }
