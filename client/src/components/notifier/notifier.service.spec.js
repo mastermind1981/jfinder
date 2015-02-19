@@ -39,6 +39,14 @@ describe('Services', function () {
             $timeout.flush();
         });
 
+        it('should update notification model when close method is invoked', function () {
+            notifier('Type', 'Title', 'Message');
+            expect(notifier.notification().visible).to.be.true;
+
+            notifier.close();
+            expect(notifier.notification().visible).to.be.false;
+        });
+
     });
 
 });
