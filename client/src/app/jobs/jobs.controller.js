@@ -1,26 +1,26 @@
 (function () {
 
-	'use strict';
+    'use strict';
 
-	angular.module('app.jobs').controller('Jobs', Jobs);
+    angular.module('app.jobs').controller('Jobs', Jobs);
 
-	Jobs.$inject = ['datasource', 'notifier'];
+    Jobs.$inject = ['dataSource', 'notifier'];
 
-	function Jobs(datasource, notifier) {
-		var vm = this;
+    function Jobs(dataSource, notifier) {
+        var vm = this;
 
-		datasource.host = 'http://localhost:3005';
-		datasource.getJobs()
-			.then(onJobsSuccess)
-			.catch(onJobsFail);
+        dataSource.host = 'http://localhost:3005';
+        dataSource.getJobs()
+            .then(onJobsSuccess)
+            .catch(onJobsFail);
 
-		function onJobsSuccess(response) {
-			vm.jobs = response;
-		}
+        function onJobsSuccess(response) {
+            vm.jobs = response;
+        }
 
-		function onJobsFail(response) {
-			notifier('warning', 'Jobs', response.data.message);
-		}
-	}
+        function onJobsFail(response) {
+            notifier('warning', 'Jobs', response.data.message);
+        }
+    }
 
 })();

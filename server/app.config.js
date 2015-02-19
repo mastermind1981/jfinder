@@ -8,7 +8,7 @@ module.exports = {
 
     jwt: {
         algorithm: 'HS265',
-        secret: ''
+        secret: 'secret'
     }
 
 };

@@ -1,0 +1,7 @@
+@keyframes show {
+    from { opacity: 0.0; }
+    to { opactiy: 1.0; }
+}
+
+.ng-enter { animation: show 0.3s both ease-in; }
+.ng-leave { display: none; }
