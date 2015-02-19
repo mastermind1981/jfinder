@@ -12,7 +12,7 @@ describe('Directives', function () {
         $templateCache.put('components/notifier/notification.html',
             '<div class="notification-placeholder" ng-cloak>' +
                 '<div class="notification alert alert-{{notification.type}} animated" ng-class="{ \'flipInY\': notification.visible, \'flipOutY\': !notification.visible, \'hidden\': !dirty }">' +
-                    '<strong>{{ notification.title }}</strong> {{ notification.message }}' +
+                    '<strong>{{ notification.title }}</strong> {{ notification.message }} <button ng-click="close()" class="pull-right btn btn-primary btn-xs">close</button>' +
                 '</div>' +
             '</div>'
         );
@@ -67,6 +67,17 @@ describe('Directives', function () {
 
             expect(element.find('.notification').hasClass('flipOutY')).to.be.false;
             expect(element.find('.notification').hasClass('flipInY')).to.be.true;
+        });
+
+        it('should update notification when close method is invoked', function () {
+            notifier('success', 'Test', 'test message content');
+            scope.$digest();
+
+            expect(notifier.notification().visible).to.be.true;
+
+            scope.close();
+            scope.$digest();
+            expect(notifier.notification().visible).to.be.false;
         });
 
     });
