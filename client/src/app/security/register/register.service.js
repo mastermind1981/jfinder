@@ -4,16 +4,16 @@
 
     angular.module('app.security').factory('register', register);
 
-    register.$inject = ['$http', 'authToken'];
+    register.$inject = ['$http', 'authToken', 'settings'];
 
-    function register($http, authToken) {
+    function register($http, authToken, settings) {
 
         var service = function (email, password) {
             return $http.post(service.host + '/register', {email: email, password: password})
                 .then(registrationSuccess);
         };
 
-        service.host = 'http://localhost:3000';
+        service.host = settings.api.host;
 
         return service;
 

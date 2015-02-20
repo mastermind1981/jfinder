@@ -4,15 +4,15 @@
 
     angular.module('app.security').factory('login', login);
 
-    login.$inject = ['$http', 'authToken'];
+    login.$inject = ['$http', 'authToken', 'settings'];
 
-    function login($http, authToken) {
+    function login($http, authToken, settings) {
         var service = function (email, password) {
             return $http.post(service.host + '/login', {email: email, password: password})
                 .then(loginSuccess);
         };
 
-        service.host = 'http://localhost:3000';
+        service.host = settings.api.host;
 
         return service;
 

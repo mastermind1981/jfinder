@@ -4,9 +4,9 @@
 
     angular.module('app.core').factory('dataSource', datasource);
 
-    datasource.$inject = ['$http'];
+    datasource.$inject = ['$http', 'settings'];
 
-    function datasource($http) {
+    function datasource($http, settings) {
 
         var service = {
             getJobs: function () {
@@ -15,7 +15,7 @@
             }
         };
 
-        service.host = 'http://localhost:3000';
+        service.host = settings.api.host;
 
         return service;
 
