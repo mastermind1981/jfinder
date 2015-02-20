@@ -3,6 +3,8 @@ describe('Controllers', function () {
     var scope, notifier, dataSource;
     var createController;
 
+    beforeEach(module('app'));
+
     beforeEach(module('app.jobs'));
 
     beforeEach(inject(function ($controller, $rootScope, _notifier_, _dataSource_) {

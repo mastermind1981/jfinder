@@ -1,13 +1,16 @@
 describe('Services', function () {
 
-    var $httpBackend, login, authToken;
+    var $httpBackend, login, authToken, settings;
+
+    beforeEach(module('app'));
 
     beforeEach(module('app.security'));
 
-    beforeEach(inject(function (_$httpBackend_, _login_, _authToken_) {
+    beforeEach(inject(function (_$httpBackend_, _login_, _authToken_, _settings_) {
         $httpBackend = _$httpBackend_;
         login = _login_;
         authToken = _authToken_;
+        settings = _settings_;
     }));
 
     afterEach(function () {
@@ -17,7 +20,7 @@ describe('Services', function () {
     describe('Login service', function () {
 
         it('should execute POST request: /login with default host', inject(function ($q) {
-            $httpBackend.expectPOST('http://localhost:3000/login', { email: 'test@test', password: 'pass' }).respond({ token: 'token' });
+            $httpBackend.expectPOST(settings.api.host + '/login', { email: 'test@test', password: 'pass' }).respond({ token: 'token' });
             login('test@test', 'pass');
         }));
 
@@ -29,7 +32,7 @@ describe('Services', function () {
         }));
 
         it('should invoke setToken method from authToken service', inject(function ($q) {
-            $httpBackend.expectPOST('http://localhost:3000/login', { email: 'test@test', password: 'pass' }).respond({ token: 'token' });
+            $httpBackend.expectPOST(settings.api.host + '/login', { email: 'test@test', password: 'pass' }).respond({ token: 'token' });
 
             sinon.spy(authToken, 'setToken');
 

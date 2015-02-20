@@ -22,7 +22,15 @@ module.exports = function (config) {
             ]
         },
 
-        reporters: ['progress', 'coverage'],
+        reporters: ['coverage', 'spec'],
+
+        plugins: [
+            'karma-sinon-chai',
+            'karma-mocha',
+            'karma-spec-reporter',
+            'karma-phantomjs-launcher',
+            'karma-coverage'
+        ],
 
         colors: true
     });

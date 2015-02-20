@@ -1,7 +1,9 @@
-describe('Controller', function () {
+describe('Controllers', function () {
 
     var scope, notifier, login;
     var createController;
+
+    beforeEach(module('app'));
 
     beforeEach(module('ui.router'));
 
