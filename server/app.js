@@ -5,17 +5,22 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 
+
 /* --- ROUTES --- */
 var jobsRoutes = require('./routes/jobs');
 var loginRoutes = require('./routes/login');
+var oauthRoutes = require('./routes/oauth');
 var registerRoutes = require('./routes/register');
+
 
 /* --- PASSPORT STRATEGIES --- */
 var loginStrategy = require('./passport/login-strategy');
 var registerStrategy = require('./passport/register-strategy');
 
+
 /* --- CUSTOM MIDDLEWARES --- */
 var cors = require('./middleware/cors');
+
 
 var app = express();
 
@@ -31,6 +36,7 @@ passport.use('local-login', loginStrategy);
 passport.use('local-register', registerStrategy);
 
 app.use('/jobs', jobsRoutes);
+app.use('/auth', oauthRoutes);
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 

@@ -1,13 +1,13 @@
 (function () {
 
-    'use strict';
+	'use strict';
 
-    angular.module('app.security').config(config);
+	angular.module('app.security').config(config);
 
-    config.$inject = ['$httpProvider'];
+	config.$inject = ['$httpProvider'];
 
-    function config($httpProvider) {
-        $httpProvider.interceptors.push('authInterceptor');
-    }
+	function config($httpProvider) {
+		$httpProvider.interceptors.push('authInterceptor');
+	}
 
 })();
