@@ -4,11 +4,11 @@
 
     angular.module('app.components').controller('Navbar', Navbar);
 
-    Navbar.$inject = ['authToken'];
+    Navbar.$inject = ['$auth'];
 
-    function Navbar(authToken) {
+    function Navbar($auth) {
         var vm = this;
-        vm.isAuthenticated = authToken.isAuthenticated();
+        vm.isAuthenticated = $auth.isAuthenticated();
     }
 
 })();

@@ -3,7 +3,9 @@
     'use strict';
 
     angular.module('app.security', [
-        'app.core'
+        'app.core',
+
+        'satellizer'
     ]);
 
 })();

@@ -4,10 +4,10 @@
 
     angular.module('app.security').controller('Logout', Logout);
 
-    Logout.$inject = ['$state', 'authToken', 'notifier'];
+    Logout.$inject = ['$state', '$auth', 'notifier'];
 
-    function Logout($state, authToken, notifier) {
-        authToken.removeToken();
+    function Logout($state, $auth, notifier) {
+        $auth.logout();
         $state.go('home');
         notifier('success', 'Logout', 'User logged out successfuly');
     }

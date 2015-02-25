@@ -4,15 +4,13 @@
 
     angular.module('app.security').controller('Register', Register);
 
-    Register.$inject = ['$state', 'notifier', 'register'];
+    Register.$inject = ['$state', 'notifier', '$auth'];
 
-    function Register($state, notifier, register) {
+    function Register($state, notifier, $auth) {
         var vm = this;
 
         vm.submit = function () {
-            register.host = 'http://localhost:3005';
-
-            register(vm.email, vm.password)
+            $auth.signup({email: vm.email, password: vm.password})
                 .then(registrationSuccess)
                 .catch(registrationFail);
         };
@@ -28,5 +26,3 @@
     }
 
 })();
-
-// todo: write tests for controller

@@ -29,7 +29,7 @@ app.use(cors);
 app.use(passport.initialize());
 
 passport.serializeUser(function (user, done) {
-	done(null, user.id);
+    done(null, user.id);
 });
 
 passport.use('local-login', loginStrategy);
@@ -44,5 +44,5 @@ app.use('/register', registerRoutes);
 mongoose.connect('mongodb://' + config.db.user + ':' + config.db.password + '@ds045031.mongolab.com:45031/' + config.db.name);
 
 var server = app.listen(process.env.PORT || 3005, function () {
-	console.log('Server is listing on port: ' + server.address().port);
+    console.log('Server is listing on port: ' + server.address().port);
 });
