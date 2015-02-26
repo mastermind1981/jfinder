@@ -1,5 +1,9 @@
 module.exports = {
 
+    client: {
+        url: 'http://localhost:3000'
+    },
+
     db: {
         user: 'admin',
         password: 'admin',
@@ -34,6 +38,22 @@ module.exports = {
 
         github: {
             url: 'https://api.github.com/user'
+        }
+    },
+
+    email: {
+        host: {
+            user: '', // <--- put an email here
+            pass: ''  // <--- put password for this email here
+        },
+
+        verify: {
+            url: 'http://localhost:' + (process.env.PORT || 3005) + '/register/verification?token=',
+            model: {
+                title: 'JFinder Account Verification',
+                subTitle: 'Verify your account',
+                body: 'Please click the button below to activate your account'
+            }
         }
     }
 

@@ -12,7 +12,6 @@
         $authProvider.loginUrl = settings.api.host + '/login';
         $authProvider.signupUrl = settings.api.host + '/register';
 
-
         /**
          * Google OAuth
          */

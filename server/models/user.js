@@ -8,7 +8,8 @@ var userSchema = Schema({
     password: String,
     googleId: String,
     githubId: String,
-    displayName: String
+    displayName: String,
+    active: Boolean
 });
 
 userSchema.pre('save', function (next) {
@@ -38,5 +39,11 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.comparePasswords = function (password, callback) {
     return bcrypt.compare(password, this.password, callback);
 };
+
+userSchema.statics.findFullAuthorized = function (query, callback) {
+    query.active = true;
+    this.findOne(query, callback);
+};
+
 
 module.exports = mongoose.model('User', userSchema);
