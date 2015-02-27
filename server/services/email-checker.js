@@ -1,6 +1,7 @@
 var config = require('../app.config');
-
 var mailer = require('./mailer');
+var program = require('./program')(process.argv);
+
 var jwt = require('jwt-simple');
 var fs = require('fs');
 var _ = require('underscore');
@@ -23,7 +24,7 @@ function sendEmail(email) {
 
     var token = jwt.encode(payload, config.jwt.secret);
 
-    mailer.send('account-verification@jfinder.com', email, 'Account Verification', getHtml(token));
+    mailer.send(program.email, email, 'Account Verification', getHtml(token));
 }
 
 function getHtml(token) {
